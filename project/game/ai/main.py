@@ -93,8 +93,8 @@ class MahjongAI:
             # if not self.open_hand_handler.last_discard_option:
                 #self.player.logger.debug(log.DISCARD, context="Discard tile: {}".format(TilesConverter.to_one_line_string([discard_tile], print_aka_dora=self.player.table.has_aka_dora)))
                 return discard_tile, False
-        if self.open_hand_handler.last_discard_option:
-            return self.hand_builder.process_discard_option(self.open_hand_handler.last_discard_option)
+        # if self.open_hand_handler.last_discard_option:
+        #     return self.hand_builder.process_discard_option(self.open_hand_handler.last_discard_option)
 
         return self.hand_builder.discard_tile()
 
