@@ -90,9 +90,10 @@ class MahjongAI:
     def discard_tile(self, discard_tile):
         # we called meld and we had discard tile that we wanted to discard
         if discard_tile is not None:
-            if not self.open_hand_handler.last_discard_option:
+            # if not self.open_hand_handler.last_discard_option:
+                #self.player.logger.debug(log.DISCARD, context="Discard tile: {}".format(TilesConverter.to_one_line_string([discard_tile], print_aka_dora=self.player.table.has_aka_dora)))
                 return discard_tile, False
-
+        if self.open_hand_handler.last_discard_option:
             return self.hand_builder.process_discard_option(self.open_hand_handler.last_discard_option)
 
         return self.hand_builder.discard_tile()
@@ -253,18 +254,18 @@ class MahjongAI:
         return True
 
     def should_call_win(self, tile, is_tsumo, enemy_seat=None, is_chankan=False):
-        # don't skip win in riichi
-        if self.player.in_riichi:
-            return True
+        # # don't skip win in riichi
+        # if self.player.in_riichi:
+        #     return True
 
-        # currently we don't support win skipping for tsumo
-        if is_tsumo:
-            return True
+        # # currently we don't support win skipping for tsumo
+        # if is_tsumo:
+        #     return True
 
         # fast path - check it first to not calculate hand cost
-        cost_needed = self.placement.get_minimal_cost_needed()
-        if cost_needed == 0:
-            return True
+        # cost_needed = self.placement.get_minimal_cost_needed()
+        # if cost_needed == 0:
+        #     return True
 
         # 1 and not 0 because we call check for win this before updating remaining tiles
         is_hotei = self.player.table.count_of_remaining_tiles == 1
@@ -278,7 +279,8 @@ class MahjongAI:
             is_haitei=is_hotei,
         )
         assert hand_response is not None
-        assert not hand_response.error, hand_response.error
+        if (hand_response.error):
+            return False
         cost = hand_response.cost
         return self.placement.should_call_win(cost, is_tsumo, enemy_seat)
 
