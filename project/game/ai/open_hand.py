@@ -83,7 +83,7 @@ class OpenHandHandler:
                 context=[
                     f"Hand: {self.player.format_hand_for_print(tile_136)}",
                     f"Meld: {meld.serialize()}",
-                    f"Discard after meld: {discard_option.serialize()}",
+                    f"Recommended Discard: {discard_option.serialize()}",
                 ],
             )
 

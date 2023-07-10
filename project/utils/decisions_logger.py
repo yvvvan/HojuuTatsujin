@@ -31,9 +31,18 @@ class DecisionsLogger:
             message = message.serialize()
 
         if isinstance(message, dict):
-            message = deepcopy(message)
-            self.serialize_dict_objects(message)
-            self.logger.debug(json.dumps(message))
+            if ("tile" in message):
+                text = "{} Shanten:{} Ukeire:{} Valuation:{} Danger:{}".format(
+                    message["tile"],
+                    message["shanten"],
+                    message["ukeire"],
+                    message["valuation"],
+                    message["danger"]["weighted_danger"])
+                self.logger.debug(text)
+            else:
+                message = deepcopy(message)
+                self.serialize_dict_objects(message)
+                self.logger.debug(message)
         else:
             self.logger.debug(message)
 
@@ -55,7 +64,7 @@ class MeldPrint(Meld):
     """
     Wrapper to be able use mahjong package MeldPrint object in our loggers.
     """
-
+    
     def __str__(self):
         meld_type_str = self.type
         if meld_type_str == self.KAN:
