@@ -15,9 +15,10 @@ class FormalTempaiStrategy(BaseStrategy):
         # if we already in tempai, we don't need this strategy
         if self.player.in_tempai:
             return False
-
+        
+        ########## first from 13th turn
         # it's too early to go for formal tempai before 11th turn
-        if self.player.round_step < 11:
+        if self.player.round_step < 13:
             return False
 
         # it's 11th turn or later and we still have 3 shanten or more,
@@ -32,7 +33,7 @@ class FormalTempaiStrategy(BaseStrategy):
                 return True
             # having 2 or more doras and 2 shanten, let's go for formal
             # tempai starting from 12th turn
-            return self.player.round_step >= 12
+            return self.player.round_step >= 14
 
         # for 1 shanten we check number of doras and ukeire to determine
         # correct time to go for formal tempai
@@ -42,23 +43,23 @@ class FormalTempaiStrategy(BaseStrategy):
                     return True
 
                 if self.player.ai.ukeire <= 28:
-                    return self.player.round_step >= 12
+                    return self.player.round_step >= 14
 
-                return self.player.round_step >= 13
+                return self.player.round_step >= 15
 
             if self.dora_count_total == 1:
                 if self.player.ai.ukeire <= 16:
-                    return self.player.round_step >= 12
+                    return self.player.round_step >= 14
 
                 if self.player.ai.ukeire <= 28:
-                    return self.player.round_step >= 13
+                    return self.player.round_step >= 15
 
-                return self.player.round_step >= 14
+                return self.player.round_step >= 16
 
             if self.player.ai.ukeire <= 16:
-                return self.player.round_step >= 13
+                return self.player.round_step >= 15
 
-            return self.player.round_step >= 14
+            return self.player.round_step >= 16
 
         # we actually never reach here
         return False
