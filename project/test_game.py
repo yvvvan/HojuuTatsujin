@@ -19,16 +19,13 @@ if __name__ == "__main__":
 
     tiles = [4, 17, 24, 56, 64, 72, 76, 92, 96, 104, 108, 116, 117]
 
-
-    # get from cv
-    
-    # ron
     signals = TEST_SIGNAL
     
     game = Game()
-    game.set_table(values_p, values)
-    game.mainplayer_init_hand(tiles)
-    print("***********")
+    # game.set_table(values_p, values)
+    # game.mainplayer_init_hand(tiles)
+    game.initialize_round(round_wind=0, seat_wind=0, initial_tiles=tiles, dora_indicator="8m", honba_sticks=0, riichi_sticks=0)
+
 
     for s in signals:
         game.run(s)
