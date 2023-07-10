@@ -201,7 +201,11 @@ class Player(PlayerInterface):
         self.ai.defence.erase_threats_cache()
 
         self.last_draw = tile_136
-        self.tiles.append(tile_136)
+        for i in range(4):
+            if tile_136+i not in self.tiles:
+                self.tiles.append(tile_136+i)
+                break
+        #self.tiles.append(tile_136)
 
         # we need sort it to have a better string presentation
         self.tiles = sorted(self.tiles)

@@ -119,6 +119,8 @@ class Table:
             tiles = [meld.tiles[0]]
 
         for tile in tiles:
+            if tile == meld.called_tile:
+                continue
             self._add_revealed_tile(tile)
 
         for player in self.players:
