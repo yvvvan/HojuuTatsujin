@@ -1,3 +1,7 @@
+import sys
+sys.path.append('.')
+sys.path.append('..')
+
 from test_signal import TEST_SIGNAL
 from yvanbot import Game
 from yvanbot import make_signal
