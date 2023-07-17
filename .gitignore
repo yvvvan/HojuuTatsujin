@@ -1,5 +1,10 @@
 .idea
 env
+mahjongcv/aimahjong-1
+mahjongcv/test_images
+mahjongcv/runs
+mahjongcv/_*.py
+mahjongcv/*.pt
 
 failed_*.txt
 
