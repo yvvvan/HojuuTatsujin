@@ -5,6 +5,7 @@ mahjongcv/test_images
 mahjongcv/runs
 mahjongcv/_*.py
 mahjongcv/*.pt
+runs
 
 failed_*.txt
 
